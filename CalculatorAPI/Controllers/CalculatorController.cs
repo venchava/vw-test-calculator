@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
+using CalculatorAPI.Models;
 
 namespace CalculatorAPI.Controllers;
 
 /// <summary>
 /// Calculator API Controller
 /// Provides basic arithmetic operations
+/// Task: VW-06
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
@@ -17,9 +19,9 @@ public class CalculatorController : ControllerBase
     /// <param name="b">Second number</param>
     /// <returns>Sum of a and b</returns>
     [HttpGet("add")]
-    public ActionResult<double> Add(double a, double b)
+    public ActionResult<CalculationResult> Add(double a, double b)
     {
-        return Ok(new { operation = "add", a, b, result = a + b });
+        return Ok(new CalculationResult { Operation = "add", A = a, B = b, Result = a + b });
     }
 
     /// <summary>
